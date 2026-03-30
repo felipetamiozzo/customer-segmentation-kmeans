@@ -1,0 +1,19 @@
+#Ambientes Virtuais Python (caso você ou outro dev use no futuro)
+venv/
+.venv/
+env/
+.env
+
+#Lixo de compilação do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+#Checkpoints automáticos do Jupyter Notebook (Isso polui muito o GitHub!)
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+#Arquivos ocultos de sistema operacional (Mac/Windows)
+.DS_Store
+Thumbs.db
