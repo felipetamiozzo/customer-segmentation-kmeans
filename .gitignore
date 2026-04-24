@@ -17,3 +17,4 @@ __pycache__/
 #Arquivos ocultos de sistema operacional (Mac/Windows)
 .DS_Store
 Thumbs.db
+

@@ -1,72 +1,261 @@
+# 📊 Segmentação de Clientes com Machine Learning
 
-## 📖 Visão Geral do Projeto
-No cenário competitivo do varejo atual, campanhas de marketing genéricas ("one-size-fits-all") resultam em desperdício de orçamento e baixa conversão. O objetivo deste projeto é utilizar **Machine Learning Não Supervisionado** para descobrir padrões ocultos de comportamento de consumo e agrupar clientes em segmentos estratégicos.
+## 🚀 Visão Geral
 
-Com base em dados transacionais e demográficos, o algoritmo identificou **4 perfis distintos de clientes**, permitindo que a equipe de Marketing substitua a intuição por decisões baseadas em dados (Data-Driven), direcionando ofertas e otimizando o Retorno sobre Investimento (ROI).
+Em um cenário altamente competitivo no varejo, campanhas de marketing genéricas ("one-size-fits-all") geram desperdício de orçamento e baixa conversão.
 
----
+Este projeto utiliza **Machine Learning Não Supervisionado (K-Means)** para identificar padrões ocultos de comportamento e segmentar clientes em grupos estratégicos, permitindo decisões orientadas por dados (**Data-Driven Marketing**).
 
-## 🛠️ Metodologia e Pipeline de Dados
-
-O projeto foi estruturado seguindo as melhores práticas de Ciência de Dados:
-
-1. **Análise Exploratória e Limpeza (EDA):** Tratamento de valores nulos, remoção de *outliers* anômalos e criação de novas variáveis (*Feature Engineering*), como `Tempo_Cliente_Dias` e `Gasto_Total`.
-2. **Pré-processamento:** Transformação de variáveis categóricas (`OneHotEncoder`) e padronização de escalas (`StandardScaler`) para garantir que o algoritmo não fosse enviesado por grandezas numéricas diferentes (ex: Renda vs. Idade).
-3. **Definição do K Ideal:** Utilização do **Método do Cotovelo (Elbow Method)** e validação da Inércia para determinar matematicamente a divisão em 4 clusters.
-4. **Redução de Dimensionalidade:** Aplicação de **PCA (Principal Component Analysis)** para condensar as variáveis originais e permitir a visualização gráfica dos clusters em espaços 2D e 3D interativos.
-5. **Modelagem Principal:** Treinamento do algoritmo **K-Means** utilizando as dimensões originais (preservando 100% da variância) para garantir precisão matemática na clusterização.
-6. **Interpretabilidade do Modelo (XAI):** Treinamento de uma **Árvore de Decisão** sobre os clusters gerados para rankear o grau de importância das variáveis na decisão do algoritmo.
+💡 O resultado é um sistema capaz de transformar dados brutos em **insights acionáveis**, aumentando eficiência de campanhas e potencializando o **Retorno sobre Investimento (ROI)**.
 
 ---
 
-## 📊 Resultados e Perfis de Negócio (Os 4 Clusters)
+## 🎯 Problema de Negócio
 
-O K-Means revelou perfeitamente as nuances da base de clientes. Os resultados foram cruzados com os dados reais para criar a seguinte tabela executiva de perfis:
+Empresas frequentemente enfrentam:
 
-* 👑 **Cluster 0 | VIPs Premium (A Mina de Ouro):** * **Perfil:** Alta renda e o maior ticket médio disparado (R$ 1.397,00). Compram com altíssima frequência e não possuem filhos dependentes em casa.
-  * **Estratégia:** Exclusividade. Programas de fidelidade premium, vinhos e carnes nobres. Zero foco em descontos de massa.
-
-* 🛒 **Cluster 2 | A Classe Média Engajada (O Motor da Loja):** * **Perfil:** Renda média/alta, gasto muito saudável (R$ 733,00) e alto engajamento. Geralmente possuem dependentes.
-  * **Estratégia:** Campanhas de "pacotes família" e excelente custo-benefício. Sustentam o fluxo de caixa do dia a dia.
-
-* 🏷️ **Cluster 1 | A Grande Massa (Caçadores de Ofertas):** * **Perfil:** Representam o maior volume da base (~50%), mas possuem o menor orçamento (Ticket médio < R$ 100,00). São mais jovens e possuem o maior número de filhos.
-  * **Estratégia:** Queimas de estoque, cupons agressivos e produtos de entrada para garantir volume e retenção.
-
-* 🔍 **Cluster 3 | Promissores (As Anomalias):** * **Perfil:** Grupo menor com renda declarada extremamente baixa, mas com engajamento e ticket médio (R$ 392,00) muito superiores à massa.
-  * **Estratégia:** Investigação de perfil e nutrição com campanhas digitais para alavancar potencial.
+* Baixa conversão em campanhas de marketing
+* Desperdício de orçamento com público não qualificado
+* Falta de personalização na comunicação com clientes
+* Dificuldade em identificar clientes de alto valor
 
 ---
 
-## 🧠 Interpretabilidade: O Que Realmente Importa?
+## 💡 Solução Proposta
 
-A análise de interpretabilidade da Árvore de Decisão trouxe um *insight* crucial para o negócio: **Demografia não dita o consumo nesta loja.**
+Aplicação de um pipeline completo de Data Science para:
 
-Variáveis clássicas como Idade, Escolaridade e Estado Civil tiveram **0% de impacto** na formação dos clusters. O algoritmo priorizou exclusivamente o comportamento financeiro:
-1. **Gasto_Total (27.3%)**
-2. **Recency / Dias desde a última compra (23.2%)**
-3. **Consumo de nichos específicos (ex: Peixes e Produtos Premium)**
+* Segmentar clientes com base em comportamento real
+* Identificar perfis de consumo distintos
+* Direcionar estratégias específicas por grupo
+* Permitir previsão de segmento para novos clientes
 
 ---
 
-## 📂 Estrutura do Repositório
+## 📈 Impacto de Negócio (ROI)
 
-```text
+Este projeto permite:
+
+### 💰 Aumento de Receita
+
+* Identificação de clientes **VIPs Premium** com maior ticket médio
+* Possibilidade de campanhas exclusivas e aumento de LTV (Lifetime Value)
+
+### 🎯 Otimização de Marketing
+
+* Redução de desperdício com campanhas genéricas
+* Segmentação precisa para campanhas direcionadas
+
+### 📉 Redução de Custos
+
+* Melhor alocação de budget em marketing
+* Menor CAC (Custo de Aquisição de Cliente)
+
+### 📊 Tomada de Decisão Estratégica
+
+* Base de clientes segmentada e interpretável
+* Insights claros para áreas de marketing e produto
+
+---
+
+## 🧠 Metodologia
+
+O projeto segue boas práticas de Ciência de Dados:
+
+### 🔍 1. Análise Exploratória (EDA)
+
+* Tratamento de valores nulos
+* Remoção de outliers
+* Análise de distribuições
+
+### ⚙️ 2. Feature Engineering
+
+* Criação de variáveis como:
+
+  * `Gasto_Total`
+  * `Tempo_Cliente_Dias`
+  * `Total_Compras`
+  * `Total_Filhos`
+
+### 🔄 3. Pré-processamento
+
+* OneHotEncoder para variáveis categóricas
+* StandardScaler para padronização
+
+### 📐 4. Definição do K Ideal
+
+* Método do Cotovelo (Elbow Method)
+* Validação por inércia
+
+### 🤖 5. Modelagem
+
+* Algoritmo: **K-Means**
+* Clusterização com base no comportamento do cliente
+
+### 📉 6. Avaliação
+
+* Silhouette Score: **0.21**
+* Validação baseada em interpretabilidade de negócio
+
+---
+
+## 👥 Segmentos Identificados
+
+### 👑 VIPs Premium (Alto Valor)
+
+* Alta renda
+* Maior gasto total
+* Alta frequência de compra
+
+📌 Estratégia:
+
+* Programas de fidelidade premium
+* Produtos exclusivos
+* Personalização avançada
+
+---
+
+### 🏷️ Grande Massa / Caçadores de Ofertas
+
+* Maior volume da base
+* Baixo ticket médio
+* Alta sensibilidade a preço
+
+📌 Estratégia:
+
+* Promoções agressivas
+* Cupons e descontos
+* Produtos de entrada
+
+---
+
+### 🛒 Classe Média Engajada
+
+* Renda intermediária/alta
+* Gasto consistente
+* Alta recorrência
+
+📌 Estratégia:
+
+* Pacotes familiares
+* Combos e ofertas
+* Retenção
+
+---
+
+### 🔍 Promissores (Anomalias)
+
+* Grupo pequeno
+* Comportamento fora do padrão
+* Alto potencial
+
+📌 Estratégia:
+
+* Campanhas digitais
+* Nutrição de leads
+* Análise individual
+
+---
+
+## 📊 Dashboard Interativo
+
+O projeto inclui um dashboard desenvolvido com **Streamlit**, permitindo:
+
+* Visualização dos clusters
+* Análise de renda vs gasto
+* Distribuição por segmento
+* Perfil médio dos clientes
+* Estratégias por cluster
+
+### 🔮 Funcionalidade Extra (Diferencial)
+
+✔ Previsão do segmento para novos clientes em tempo real
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+* Python
+* Pandas / NumPy
+* Scikit-learn
+* Plotly
+* Streamlit
+* Joblib
+
+---
+
+## 📂 Estrutura do Projeto
+
+```
+customer-segmentation/
+├── app/
+│   └── streamlit_app.py
 ├── data/
-│   ├── raw/                   # Dados originais e brutos
-│   └── processed/             # Dados limpos e exportados (com as etiquetas dos clusters)
+│   ├── raw/
+│   └── processed/
+├── models/
 ├── notebooks/
-│   └── customer_segmentation.ipynb  # Notebook principal com toda a análise e modelagem
-├── README.md                  # Documentação do projeto
-````
+├── src/
+│   ├── data_processing.py
+│   ├── train_model.py
+│   └── predict.py
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## ▶️ Como Executar
+
+### 1. Criar ambiente virtual
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+### 2. Instalar dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Treinar o modelo
+
+```bash
+python src/train_model.py
+```
+
+### 4. Rodar o dashboard
+
+```bash
+streamlit run app/streamlit_app.py
+```
+
+---
+
+## 📌 Diferenciais do Projeto
+
+✔ Pipeline completo de Data Science
+✔ Aplicação prática orientada a negócio
+✔ Dashboard interativo
+✔ Previsão em tempo real
+✔ Storytelling com foco em ROI
+✔ Código modular (produção-ready)
+
+---
 
 ## 👨‍💻 Autor
 
-**Felipe Tamiozzo**
+Felipe Tamiozzo
 
-  * Estudante de Data Science em transição para a área de Dados.
-  * Conecte-se comigo no [LinkedIn](https://linkedin.com/in/felipetamiozzo/)
-  * Veja outros projetos no meu [GitHub](https://github.com/felipetamiozzo)
+🔗 LinkedIn: https://linkedin.com/in/felipetamiozzo
+🔗 GitHub: https://github.com/felipetamiozzo
 
-<!-- end list -->
+---
 
-```
+## 📢 Conclusão
+
+Este projeto demonstra como técnicas de Machine Learning podem ser aplicadas para resolver problemas reais de negócio, transformando dados em vantagem competitiva.
+
+Mais do que segmentar clientes, o objetivo foi criar um **produto de dados**, capaz de gerar impacto direto em decisões estratégicas.
